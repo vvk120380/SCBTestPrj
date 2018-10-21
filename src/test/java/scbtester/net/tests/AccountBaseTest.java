@@ -13,9 +13,9 @@ public class AccountBaseTest extends BaseTest{
     public void getAccessBaseWithCorrectData(){
         AccountBaseResponseModel accountBaseResponseModel = accountSteps.accountBase(user_name, client_id);
         SoftAssertions softly = new SoftAssertions();
-        softly.assertThat(accountBaseResponseModel.isSuccess()).as("").isTrue();
-        softly.assertThat(accountBaseResponseModel.getStatus()).as("").isEqualTo(200);
-        softly.assertThat(accountBaseResponseModel.getData().getUrl()).as("").isEqualTo(user_name);
+        softly.assertThat(accountBaseResponseModel.isSuccess()).isTrue();
+        softly.assertThat(accountBaseResponseModel.getStatus()).isEqualTo(200);
+        softly.assertThat(accountBaseResponseModel.getData().getUrl()).isEqualTo(user_name);
         softly.assertAll();
     }
 
@@ -23,8 +23,8 @@ public class AccountBaseTest extends BaseTest{
     public void getAccessBaseWithWrongClientId(){
         AccountBaseResponseModel accountBaseResponseModel = accountSteps.accountBase(user_name, "wrong_data");
         SoftAssertions softly = new SoftAssertions();
-        softly.assertThat(accountBaseResponseModel.isSuccess()).as("").isFalse();
-        softly.assertThat(accountBaseResponseModel.getStatus()).as("").isEqualTo(400);
+        softly.assertThat(accountBaseResponseModel.isSuccess()).isFalse();
+        softly.assertThat(accountBaseResponseModel.getStatus()).isEqualTo(400);
         softly.assertAll();
     }
 
@@ -32,11 +32,11 @@ public class AccountBaseTest extends BaseTest{
     public void getAccessBaseWithWrongUserName(){
         AccountBaseResponseModel accountBaseResponseModel = accountSteps.accountBase("wrong_data", client_id);
         SoftAssertions softly = new SoftAssertions();
-        softly.assertThat(accountBaseResponseModel.isSuccess()).as("").isFalse();
-        softly.assertThat(accountBaseResponseModel.getStatus()).as("").isEqualTo(404);
-        softly.assertThat(accountBaseResponseModel.getData().getError()).as("").isEqualTo("Unable to find account username, wrong_data");
-        softly.assertThat(accountBaseResponseModel.getData().getRequest()).as("").isEqualTo("/3/account/wrong_data");
-        softly.assertThat(accountBaseResponseModel.getData().getMethod()).as("").isEqualTo("GET");
+        softly.assertThat(accountBaseResponseModel.isSuccess()).isFalse();
+        softly.assertThat(accountBaseResponseModel.getStatus()).isEqualTo(404);
+        softly.assertThat(accountBaseResponseModel.getData().getError()).isEqualTo("Unable to find account username, wrong_data");
+        softly.assertThat(accountBaseResponseModel.getData().getRequest()).isEqualTo("/3/account/wrong_data");
+        softly.assertThat(accountBaseResponseModel.getData().getMethod()).isEqualTo("GET");
         softly.assertAll();
     }
 

@@ -15,8 +15,8 @@ public class GenerateAccountTokenTest extends BaseTest{
     @Test
     public void getAccessTokenWithCorrectIdentityData(){
         GenerateAccessTokenResponseModel genAccessTokenRequest = accountSteps.generateAccessToken(refresh_token, client_id, client_secret);
-        assertThat(genAccessTokenRequest.getRequestModelSuccess().getToken_type()).as("").isEqualTo("bearer");
-        assertThat(genAccessTokenRequest.getRequestModelSuccess().getAccount_username()).as("").isEqualTo("SCBTester");
+        assertThat(genAccessTokenRequest.getRequestModelSuccess().getToken_type()).isEqualTo("bearer");
+        assertThat(genAccessTokenRequest.getRequestModelSuccess().getAccount_username()).isEqualTo("SCBTester");
     }
 
     @Test
